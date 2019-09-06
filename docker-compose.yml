@@ -1,8 +1,10 @@
 version: '3'
 
+
 services:
     nginx:
         build: './nginx'
+        env_file: ./.env
         ports:
             - "80:80"
             - "8080:8080"
@@ -15,7 +17,7 @@ services:
             - ./nginx/nginx.conf:/etc/nginx/nginx.conf
             - ./nginx/conf.d:/etc/nginx/conf.d
             - ./nginx/logs:/etc/nginx/logs
-            - E:\project:/usr/local/lx-www
+            - ${WWW_PATH}:/usr/local/lx-www
         depends_on:
             - php
         networks:
@@ -65,13 +67,14 @@ services:
 
     php:
         build: ./php
+        env_file: ./.env
         ports:
             - "9000:9000"
         volumes:
             - ./php/php.ini:/usr/local/etc/php/php.ini
             - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
             - ./php/php-fpm.d:/usr/local/etc/php-fpm.d
-            - E:\project:/usr/local/lx-www
+            - ${WWW_PATH}:/usr/local/lx-www
         networks:
             localhost:
                 aliases:
