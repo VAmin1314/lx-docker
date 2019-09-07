@@ -85,7 +85,7 @@ services:
             MYSQL_ROOT_PASSWORD: "Ashabi123.."
             MYSQL_DATABASE: "ms_db_main"
             MYSQL_USER: "ms_db"
-            MYSQL_PASS: "Ashabi123"
+            MYSQL_PASSWORD: "Ashabi123"
         ports:
             - '3306:3306'
         volumes:
