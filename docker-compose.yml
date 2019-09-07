@@ -94,7 +94,7 @@ services:
             - ./mysql/data:/var/lib/mysql
             - ./mysql/db:/var/lib/db
             - ./mysql/init:/docker-entrypoint-initdb.d
-        command: --default-authentication-plugin=mysql_native_password
+        command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true
         networks:
             localhost:
                 aliases:
