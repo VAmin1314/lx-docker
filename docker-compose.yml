@@ -80,6 +80,7 @@ services:
 
     mysql:
         build: ./mysql
+        container_name: lx-mysql
         environment:
             MYSQL_ROOT_PASSWORD: "Ashabi123.."
             # TZ: "Asia/Shanghai"
