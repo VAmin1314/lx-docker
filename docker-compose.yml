@@ -90,7 +90,7 @@ services:
             - '3306:3306'
         volumes:
             - ./mysql/my.cnf:/etc/mysql/my.cnf
-            - ./mysql/data:/usr/local/mysql
+            - ./mysql/data:/var/lib/mysql
             - ./mysql/init:/docker-entrypoint-initdb.d
         networks:
             localhost:
