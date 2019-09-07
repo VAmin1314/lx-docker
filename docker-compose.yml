@@ -91,6 +91,7 @@ services:
         volumes:
             - ./mysql/my.cnf:/etc/mysql/my.cnf
             - ./mysql/data:/usr/local/mysql
+            - ./mysql/init:/docker-entrypoint-initdb.d
         networks:
             localhost:
                 aliases:
