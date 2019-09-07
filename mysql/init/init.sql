@@ -7,7 +7,7 @@ grant all privileges on ms_db_log.* to 'ms_db'@'%' identified by 'W*goUr8e8Pv(u.
 flush privileges;
 
 use ms_db_main;
-source /root/main.sql;
+source /var/lib/db/main.sql;
 
 use ms_db_log;
-source /root/log.sql
+source /var/lib/db/log.sql;
