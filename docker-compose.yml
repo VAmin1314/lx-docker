@@ -82,7 +82,7 @@ services:
         build: ./mysql
         environment:
             MYSQL_ROOT_PASSWORD: "Ashabi123.."
-            TZ: "Asia/Shanghai"
+            # TZ: "Asia/Shanghai"
             # MYSQL_DATABASE: "ms_db_main"
             # MYSQL_USER: "ms_db"
             # MYSQL_PASSWORD: "Ashabi123"
