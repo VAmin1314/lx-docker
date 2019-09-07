@@ -81,14 +81,21 @@ services:
         restart: always
 
     # mysql:
-    #     image: 'mysql:5.7.25'
-    #     # ports:
-    #     #     - '3306:3306'
-    #     expose:
-    #         - 3306
+    #     build: ./mysql
+    #     environment:
+    #         MYSQL_ROOT_PASSWORD: "Ashabi123.."
+    #         MYSQL_USER: "ms_db"
+    #         MYSQL_PASS: "Ashabi123"
+    #     ports:
+    #         - '3306:3306'
     #     volumes:
-    #         - ./mysql:/usr/local/mysql
-    # docker run --rm --interactive --tty --volume $PWD:/app composer install
+    #         - ./mysql/my.cnf:/usr/local/mysql/my.cnf
+    #         - ./mysql/data:/usr/local/mysql/data
+    #     networks:
+    #         localhost:
+    #             aliases:
+    #                 - mysql-net
+    #     restart: always
 
 networks:
     localhost:
