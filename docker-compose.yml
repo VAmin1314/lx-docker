@@ -43,6 +43,7 @@ services:
             - '6379:6379'
         volumes:
             - ./redis/6379:/usr/local/redis
+            - ${WWW_PATH}:/usr/local/lx-www
         networks:
             localhost:
                 aliases:
@@ -58,6 +59,7 @@ services:
             - '6380:6380'
         volumes:
             - ./redis/6380:/usr/local/redis
+            - ${WWW_PATH}:/usr/local/lx-www
         networks:
             localhost:
                 aliases:

@@ -1,5 +1,7 @@
 FROM php:7.2-fpm-alpine
 
+USER liujian:staff
+
 RUN set -xe \
     && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update \

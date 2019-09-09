@@ -1,5 +1,7 @@
 FROM nginx:1.17-alpine
 
+USER liujian:staff
+
 RUN set -ex \
     && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update \
