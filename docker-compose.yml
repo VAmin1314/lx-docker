@@ -59,7 +59,7 @@ services:
             - '6380:6380'
         volumes:
             - ./redis/6380:/usr/local/redis
-            - ${WWW_PATH}/php_script/script:/usr/local/script
+            - ${WWW_PATH}/php_script/redis:/usr/local/script
         networks:
             localhost:
                 aliases:
