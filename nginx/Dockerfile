@@ -1,6 +1,6 @@
 FROM nginx:1.17-alpine
 
-USER liujian:staff
+USER ${USER}:${GROUP}
 
 RUN set -ex \
     && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \

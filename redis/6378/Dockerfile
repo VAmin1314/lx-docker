@@ -1,5 +1,7 @@
 FROM redis:5.0-alpine
 
+USER ${USER}:${GROUP}
+
 RUN set -ex \
 	&& sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update \
