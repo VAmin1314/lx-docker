@@ -8,10 +8,10 @@ RUN set -ex \
     && apk update \
     && apk add --no-cache --update tzdata \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-    && apk del tzdata \
-    && sh /usr/local/script/redis/install.sh
+    && apk del tzdata 
+    # && sh /usr/local/script/install.sh
     # && echo 1 > /proc/sys/vm/overcommit_memory \
     # && echo 2048 > /proc/sys/net/core/somaxconn
     # && echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
-CMD ["redis-server", "/usr/local/redis/redis.conf"]
+# CMD ["redis-server", "/usr/local/redis/redis.conf"]
