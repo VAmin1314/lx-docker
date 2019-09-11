@@ -18,7 +18,7 @@ services:
             - ./nginx/logs:/etc/nginx/logs
             - ${WWW_PATH}:/usr/local/lx-www
         depends_on:
-            - php
+            - php-fpm
         networks:
             localhost:
                 aliases:
@@ -44,12 +44,12 @@ services:
         volumes:
             - ./redis/6379:/usr/local/redis
             - ${WWW_PATH}/php_script/redis:/usr/local/script
-        command: 
-            - /bin/sh
-            - -c
-            - |
-              redis-server /usr/local/redis/redis.conf
-              sh /usr/local/script/install.sh
+        # command: 
+        #     - /bin/sh
+        #     - -c
+        #     - |
+        #       redis-server /usr/local/redis/redis.conf
+        #       sh /usr/local/script/install.sh
         networks:
             localhost:
                 aliases:
@@ -74,20 +74,46 @@ services:
             net.core.somaxconn: 65535
         restart: always
 
-    php:
-        build: ./php
-        container_name: docker-php
+    php-fpm:
+        build: ./php-fpm
+        container_name: docker-php-fpm
         ports:
             - "9000:9000"
         volumes:
-            - ./php/php.ini:/usr/local/etc/php/php.ini
-            - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
-            - ./php/php-fpm.d:/usr/local/etc/php-fpm.d
+            - ./php-fpm/php.ini:/usr/local/etc/php/php.ini
+            - ./php-fpm/php-fpm.conf:/usr/local/etc/php-fpm.conf
+            - ./php-fpm/php-fpm.d:/usr/local/etc/php-fpm.d
             - ${WWW_PATH}:/usr/local/lx-www
         networks:
             localhost:
                 aliases:
-                    - php
+                    - php-fpm
+        depends_on:
+            - mysql
+        restart: always
+
+    php-swoole:
+        build: ./php-swoole
+        container_name: docker-php-swoole
+        ports:
+            - "9555:9555"
+        volumes:
+            - ./php-swoole/php.ini:/usr/local/etc/php/php.ini
+            - ./php-swoole/php-fpm.conf:/usr/local/etc/php-fpm.conf
+            - ./php-swoole/php-fpm.d:/usr/local/etc/php-fpm.d
+            - ${WWW_PATH}/thinkphp:/usr/local/thinkphp
+        command: 
+            - /bin/sh
+            - -c
+            - |
+                cd /usr/local/thinkphp
+                php think swoole:server
+        networks:
+            localhost:
+                aliases:
+                    - php-swoole
+        depends_on:
+            - mysql
         restart: always
 
     mysql:

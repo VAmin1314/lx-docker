@@ -11,8 +11,8 @@ RUN set -xe \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install pdo_mysql mysqli gd \
     && pecl install yar \
-    && pecl install redis \
     && pecl install yaf \
+    && pecl install redis \
     && pecl install swoole \
     && docker-php-ext-enable redis yaf swoole yar \
     && rm -rf /usr/share/php \
@@ -20,5 +20,3 @@ RUN set -xe \
     && apk del .phpize-deps tzdata
 
 # COPY config/opcache.ini $PHP_INI_DIR/conf.d/
-# CMD ["php-fpm"]
-
