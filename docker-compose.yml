@@ -113,6 +113,12 @@ services:
                     - mysql
         restart: always
 
+    # composer:
+    #     build: ./composer
+    #     container_name: docker-composer
+
 networks:
     localhost:
         driver: bridge
+
+
