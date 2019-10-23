@@ -9,7 +9,7 @@ RUN set -xe \
     && apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install pdo_mysql mysqli gd \
+    && docker-php-ext-install pdo_mysql mysqli gd zip \
     && pecl install yar \
     && pecl install yaf \
     && pecl install redis \
