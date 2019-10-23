@@ -1,6 +1,5 @@
 FROM redis:5.0-alpine
 
-# USER liujian:staff
 USER ${USER}:${GROUP}
 
 RUN set -ex \
@@ -14,4 +13,4 @@ RUN set -ex \
     # && echo 2048 > /proc/sys/net/core/somaxconn
     # && echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
-# CMD ["redis-server", "/usr/local/redis/redis.conf"]
+CMD ["redis-server", "/usr/local/redis/redis.conf"]
