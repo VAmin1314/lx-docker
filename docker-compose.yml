@@ -43,7 +43,7 @@ services:
             - '6379:6379'
         volumes:
             - ./redis/6379:/usr/local/redis
-            - ${WWW_PATH}/php_script/redis:/usr/local/script
+            - ${WWW_PATH}/lx-script/redis:/usr/local/script
         # command: 
         #     - /bin/sh
         #     - -c
@@ -65,7 +65,7 @@ services:
             - '6380:6380'
         volumes:
             - ./redis/6380:/usr/local/redis
-            - ${WWW_PATH}/php_script/redis:/usr/local/script
+            - ${WWW_PATH}/lx-script/redis:/usr/local/script
         networks:
             localhost:
                 aliases:
