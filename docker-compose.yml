@@ -82,80 +82,80 @@ services:
             localhost:
                 aliases:
                     - php-fpm
-        depends_on:
-            - mysql-3306
+        # depends_on:
+        #     - mysql-3306
         restart: always
 
-    php-swoole:
-        build: ./php-swoole
-        container_name: docker-php-swoole
-        ports:
-            - "9555:9555"
-        volumes:
-            - ./php-swoole/php.ini:/usr/local/etc/php/php.ini
-            - ./php-swoole/php-fpm.conf:/usr/local/etc/php-fpm.conf
-            - ./php-swoole/php-fpm.d:/usr/local/etc/php-fpm.d
-            - ${WWW_PATH}/thinkphp:/usr/local/thinkphp
-        command: 
-            - /bin/sh
-            - -c
-            - |
-                cd /usr/local/thinkphp
-                php think swoole:server
-        networks:
-            localhost:
-                aliases:
-                    - php-swoole
-        depends_on:
-            - mysql-3306
-        restart: always
+    # php-swoole:
+    #     build: ./php-swoole
+    #     container_name: docker-php-swoole
+    #     ports:
+    #         - "9555:9555"
+    #     volumes:
+    #         - ./php-swoole/php.ini:/usr/local/etc/php/php.ini
+    #         - ./php-swoole/php-fpm.conf:/usr/local/etc/php-fpm.conf
+    #         - ./php-swoole/php-fpm.d:/usr/local/etc/php-fpm.d
+    #         - ${WWW_PATH}/thinkphp:/usr/local/thinkphp
+    #     command: 
+    #         - /bin/sh
+    #         - -c
+    #         - |
+    #             cd /usr/local/thinkphp
+    #             php think swoole:server
+    #     networks:
+    #         localhost:
+    #             aliases:
+    #                 - php-swoole
+    #     # depends_on:
+    #     #     - mysql-3306
+    #     restart: always
 
-    mysql-3306:
-        build: ./mysql/3306
-        container_name: docker-mysql-3306
-        environment:
-            MYSQL_ROOT_PASSWORD: "Ashabi123.."
-            TZ: "Asia/Shanghai"
-            # MYSQL_DATABASE: "ms_db_main"
-            # MYSQL_USER: "ms_db"
-            # MYSQL_PASSWORD: "Ashabi123"
-        ports:
-            - '3306:3306'
-        volumes:
-            - ./mysql/3306/my.cnf:/etc/mysql/my.cnf
-            - ./mysql/3306/data:/var/lib/mysql
-            - ./mysql/3306/db:/var/lib/db
-            - ./mysql/3306/init:/docker-entrypoint-initdb.d
-        command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true
-        networks:
-            localhost:
-                aliases:
-                    - mysql-3306
-        restart: always
+    # mysql-3306:
+    #     build: ./mysql/3306
+    #     container_name: docker-mysql-3306
+    #     environment:
+    #         MYSQL_ROOT_PASSWORD: "Ashabi123.."
+    #         TZ: "Asia/Shanghai"
+    #         # MYSQL_DATABASE: "ms_db_main"
+    #         # MYSQL_USER: "ms_db"
+    #         # MYSQL_PASSWORD: "Ashabi123"
+    #     ports:
+    #         - '3306:3306'
+    #     volumes:
+    #         - ./mysql/3306/my.cnf:/etc/mysql/my.cnf
+    #         - ./mysql/3306/data:/var/lib/mysql
+    #         - ./mysql/3306/db:/var/lib/db
+    #         - ./mysql/3306/init:/docker-entrypoint-initdb.d
+    #     command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true
+    #     networks:
+    #         localhost:
+    #             aliases:
+    #                 - mysql-3306
+    #     restart: always
 
-    mysql-3307:
-        build: ./mysql/3307
-        container_name: docker-mysql-3307
-        environment:
-            MYSQL_ROOT_PASSWORD: "Ashabi123.."
-            TZ: "Asia/Shanghai"
-            # MYSQL_DATABASE: "ms_db_main"
-            # MYSQL_USER: "ms_db"
-            # MYSQL_PASSWORD: "Ashabi123"
-        ports:
-            - '3307:3307'
-        volumes:
-            - ./mysql/3307/my.cnf:/etc/mysql/my.cnf
-            - ./mysql/3307/data:/var/lib/mysql
-            - ./mysql/3307/db:/var/lib/db
-            - ./mysql/3307/init:/docker-entrypoint-initdb.d
-        command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true
-        networks:
-            localhost:
-                aliases:
-                    - mysql-3307
-        restart: always
-# --remove-orphans flag
+    # mysql-3307:
+    #     build: ./mysql/3307
+    #     container_name: docker-mysql-3307
+    #     environment:
+    #         MYSQL_ROOT_PASSWORD: "Ashabi123.."
+    #         TZ: "Asia/Shanghai"
+    #         # MYSQL_DATABASE: "ms_db_main"
+    #         # MYSQL_USER: "ms_db"
+    #         # MYSQL_PASSWORD: "Ashabi123"
+    #     ports:
+    #         - '3307:3307'
+    #     volumes:
+    #         - ./mysql/3307/my.cnf:/etc/mysql/my.cnf
+    #         - ./mysql/3307/data:/var/lib/mysql
+    #         - ./mysql/3307/db:/var/lib/db
+    #         - ./mysql/3307/init:/docker-entrypoint-initdb.d
+    #     command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true
+    #     networks:
+    #         localhost:
+    #             aliases:
+    #                 - mysql-3307
+    #     restart: always
+
     # composer:
     #     build: ./composer
     #     container_name: docker-composer
@@ -165,3 +165,4 @@ networks:
         driver: bridge
 
 
+# --remove-orphans flag
