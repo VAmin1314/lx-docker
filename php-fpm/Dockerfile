@@ -10,10 +10,10 @@ RUN set -xe \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install pdo_mysql mysqli gd zip \
-    && pecl install yar \
-    && pecl install yaf \
-    && pecl install redis \
-    && pecl install swoole \
+    && pecl install yar-2.0.5 \
+    && pecl install yaf-3.0.8 \
+    && pecl install redis-5.0.2 \
+    && pecl install swoole-4.4.9 \
     && docker-php-ext-enable redis yaf swoole yar \
     && rm -rf /usr/share/php \
     && rm -rf /tmp/* \
