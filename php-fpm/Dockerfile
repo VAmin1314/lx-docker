@@ -13,8 +13,8 @@ RUN set -xe \
     && pecl install yar-2.0.5 \
     && pecl install yaf-3.0.8 \
     && pecl install redis-5.0.2 \
-    && pecl install swoole-4.4.9 \
-    && docker-php-ext-enable redis yaf swoole yar \
+    && pecl install grpc-1.23.1 \
+    && docker-php-ext-enable redis swoole yar grpc \
     && rm -rf /usr/share/php \
     && rm -rf /tmp/* \
     && apk del .phpize-deps tzdata

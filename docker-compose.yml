@@ -86,29 +86,29 @@ services:
         #     - mysql-3306
         restart: always
 
-    # php-swoole:
-    #     build: ./php-swoole
-    #     container_name: docker-php-swoole
-    #     ports:
-    #         - "9555:9555"
-    #     volumes:
-    #         - ./php-swoole/php.ini:/usr/local/etc/php/php.ini
-    #         - ./php-swoole/php-fpm.conf:/usr/local/etc/php-fpm.conf
-    #         - ./php-swoole/php-fpm.d:/usr/local/etc/php-fpm.d
-    #         - ${WWW_PATH}/thinkphp:/usr/local/thinkphp
-    #     command: 
-    #         - /bin/sh
-    #         - -c
-    #         - |
-    #             cd /usr/local/thinkphp
-    #             php think swoole:server
-    #     networks:
-    #         localhost:
-    #             aliases:
-    #                 - php-swoole
-    #     # depends_on:
-    #     #     - mysql-3306
-    #     restart: always
+    php-swoole:
+        build: ./php-swoole
+        container_name: docker-php-swoole
+        ports:
+            - "9555:9555"
+        volumes:
+            - ./php-swoole/php.ini:/usr/local/etc/php/php.ini
+            - ./php-swoole/php-fpm.conf:/usr/local/etc/php-fpm.conf
+            - ./php-swoole/php-fpm.d:/usr/local/etc/php-fpm.d
+            - ${WWW_PATH}/thinkphp:/usr/local/thinkphp
+        command: 
+            - /bin/sh
+            - -c
+            - |
+                cd /usr/local/thinkphp
+                php think swoole:server
+        networks:
+            localhost:
+                aliases:
+                    - php-swoole
+        # depends_on:
+        #     - mysql-3306
+        restart: always
 
     # mysql-3306:
     #     build: ./mysql/3306
